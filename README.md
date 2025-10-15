@@ -125,5 +125,5 @@ Make sure you have the following installed:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/hospital-san-vicente.git
+   git clone https://github.com/San1000-Ark/hospital-san-vicente.git
    cd hospital-san-vicente
