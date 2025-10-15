@@ -1,0 +1,17 @@
+@model Test_Santiagorestrepoarismendy.Models.Appointment
+
+@{
+    ViewData["Title"] = "Detalles de la Cita";
+}
+
+<h2>Details of appointment</h2>
+
+<div class="card p-3">
+    <p><strong>Date:</strong> @Model.Date.ToString("yyyy-MM-dd HH:mm")</p>
+    <p><strong>Observation:</strong> @Model.Observations</p>
+    <p><strong>Doctor:</strong> @($"{Model.Doctor?.Name} {Model.Doctor?.LastName}")</p>
+    <p><strong>Patient:</strong> @($"{Model.Patient?.Name} {Model.Patient?.Lastname}")</p>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning mt-3">Edit</a>
+<a asp-action="Index" class="btn btn-secondary mt-3">Close</a>

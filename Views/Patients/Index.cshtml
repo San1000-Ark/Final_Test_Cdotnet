@@ -1,0 +1,38 @@
+@model IEnumerable<Test_Santiagorestrepoarismendy.Models.Patient>
+@{
+    ViewData["Title"] = "Patients";
+}
+
+<h2 class="mb-4">Patients</h2>
+
+<a class="btn btn-success mb-3" asp-action="Create"> Add Patient</a>
+
+<table class="table table-hover table-bordered">
+    <thead class="table-dark">
+    <tr>
+        <th>Name</th>
+        <th>Lastname</th>
+        <th>Birth Date</th>
+        <th>Symptom</th>
+        <th>Phone</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Lastname</td>
+            <td>@item.BirthDate.ToShortDateString()</td>
+            <td>@item.Symptom</td>
+            <td>@item.PhoneNumber</td>
+            <td>
+                <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

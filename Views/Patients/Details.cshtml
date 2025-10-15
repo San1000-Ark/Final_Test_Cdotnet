@@ -1,0 +1,17 @@
+@model Test_Santiagorestrepoarismendy.Models.Patient
+@{
+    ViewData["Title"] = "Patient Details";
+}
+
+<h2 class="mb-4">Patient Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name @Model.Lastname</h5>
+        <p><strong>Birth Date:</strong> @Model.BirthDate.ToShortDateString()</p>
+        <p><strong>Symptom:</strong> @Model.Symptom</p>
+        <p><strong>Phone:</strong> @Model.PhoneNumber</p>
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary mt-3"> Back</a>

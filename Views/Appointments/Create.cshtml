@@ -1,0 +1,77 @@
+@model Test_Santiagorestrepoarismendy.Models.Appointment
+
+@{
+    ViewData["Title"] = "Create Appointment";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center text-light">Create Appointment</h2>
+
+    <form asp-action="Create" method="post" class="shadow p-4 rounded bg-dark text-light">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <!--  Date-->
+        <div class="mb-3">
+            <label asp-for="Date" class="form-label">Date</label>
+            <input asp-for="Date" class="form-control" type="date" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+
+        <!-- Hour-->
+        <div class="mb-3">
+            <label asp-for="Hour" class="form-label">Hour</label>
+            <input asp-for="Hour" class="form-control" type="time" />
+            <span asp-validation-for="Hour" class="text-danger"></span>
+        </div>
+
+        <!-- Observations -->
+        <div class="mb-3">
+            <label asp-for="Observations" class="form-label">Observations</label>
+            <input asp-for="Observations" class="form-control" />
+            <span asp-validation-for="Observations" class="text-danger"></span>
+        </div>
+
+        <!-- Estate-->
+        <div class="mb-3">
+            <label asp-for="State" class="form-label">State</label>
+            <select asp-for="State" class="form-select">
+                <option value="">-- Select a state --</option>
+                <option value="Pendent">Pendent</option>
+                <option value="Seen">Seen</option>
+                <option value="Canceled">Canceled</option>
+            </select>
+            <span asp-validation-for="State" class="text-danger"></span>
+        </div>
+
+        <!-- Patient -->
+        <div class="mb-3">
+            <label asp-for="PatientId" class="form-label">Patient</label>
+            <select asp-for="PatientId" class="form-select" asp-items="ViewBag.Patients">
+                <option value="">-- Select a patient --</option>
+            </select>
+            <span asp-validation-for="PatientId" class="text-danger"></span>
+        </div>
+
+        <!-- Doctor-->
+        <div class="mb-3">
+            <label asp-for="DoctorId" class="form-label">Doctor</label>
+            <select asp-for="DoctorId" class="form-select" asp-items="ViewBag.Doctors">
+                <option value="">-- Select a doctor --</option>
+            </select>
+            <span asp-validation-for="DoctorId" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4" style="gap: 10px;">
+            <button type="submit"
+                    class="btn"
+                    style="background-color:#1db954; color:white; border:none; border-radius:8px; padding:10px 25px;">
+                Save
+            </button>
+            <a asp-action="Index"
+               class="btn"
+               style="background-color:#3a3a3a; color:white; border:none; border-radius:8px; padding:10px 25px;">
+                Cancel
+            </a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,36 @@
+@* // vista: Index de Doctors *@
+@model IEnumerable<Test_Santiagorestrepoarismendy.Models.Doctor>
+@{
+    ViewData["Title"] = "Doctors";
+}
+
+<h1 class="mb-4 neon-title">Doctors List</h1>
+
+<a class="btn btn-success mb-3" href="/Doctors/Create">+ Add Doctor</a>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-light">
+    <tr>
+        <th>Name</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th>Specialty</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.LastName</td>
+            <td>@item.Email</td>
+            <td>@item.Specialty</td>
+            <td>
+                <a class="btn btn-sm btn-info" href="/Doctors/Details/@item.Id">Details</a>
+                <a class="btn btn-sm btn-warning" href="/Doctors/Edit/@item.Id">Edit</a>
+                <a class="btn btn-sm btn-danger" href="/Doctors/Delete/@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

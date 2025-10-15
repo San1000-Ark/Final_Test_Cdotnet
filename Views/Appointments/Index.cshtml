@@ -1,0 +1,92 @@
+@{
+    ViewData["Title"] = "Lista de Citas";
+    var appointments = ViewData["Appointments"] as List<Test_Santiagorestrepoarismendy.Models.Appointment>;
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Management Appoointments</h2>
+
+    <div class="d-flex justify-content-end mb-3">
+        <a asp-action="Create" class="btn" style="background-color:#1db954; color:white; border:none; border-radius:8px; padding:10px 25px;">
+            New appointment
+        </a>
+    </div>
+
+    @if (appointments == null || !appointments.Any())
+    {
+        <div class="alert alert-info text-center">Not found appointments.</div>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped text-center">
+            <thead style="background-color:#1db954; color:white;">
+                <tr>
+                    <th>Date</th>
+                    <th>Hour</th>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Observation</th>
+                    <th>State</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in appointments)
+                {
+                    <tr>
+                        <td>@item.Date.ToString("dd/MM/yyyy")</td>
+                        <td>@item.Hour</td>
+                        <td>@item.Patient?.Name @item.Patient?.Lastname</td>
+                        <td>@item.Doctor?.Name @item.Doctor?.LastName</td>
+                        <td>@item.Observations</td>
+                        <td>@item.State</td>
+                        <td>
+                            <div class="btn-group" role="group" style="gap: 5px;">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Detalles</a>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <hr />
+
+    <div class="mt-4">
+        <h4>Quick filters</h4>
+        <p>Select any doctor or patient to show the appointments</p>
+
+        <form method="get" class="row g-3 align-items-center">
+            <div class="col-md-4">
+                <label class="form-label">Select patient</label>
+                <select class="form-select" onchange="if(this.value) window.location.href='/Appointments/ByPatient/' + this.value;">
+                    <option value="">-- Select patient --</option>
+                    @foreach (var p in appointments!.Select(a => a.Patient).Distinct())
+                    {
+                        if (p != null)
+                        {
+                            <option value="@p.Id">@p.Name @p.Lastname</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Select Doctor</label>
+                <select class="form-select" onchange="if(this.value) window.location.href='/Appointments/ByDoctor/' + this.value;">
+                    <option value="">-- Select doctor --</option>
+                    @foreach (var d in appointments!.Select(a => a.Doctor).Distinct())
+                    {
+                        if (d != null)
+                        {
+                            <option value="@d.Id">@d.Name @d.LastName</option>
+                        }
+                    }
+                </select>
+            </div>
+        </form>
+    </div>
+</div>

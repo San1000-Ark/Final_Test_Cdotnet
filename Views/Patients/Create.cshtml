@@ -1,0 +1,52 @@
+@model Test_Santiagorestrepoarismendy.Models.Patient
+@{
+    ViewData["Title"] = "Create Patient";
+}
+
+<h2 class="mb-4">Add New Patient</h2>
+
+<form asp-action="Create" method="post" class="needs-validation" novalidate>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Lastname" class="form-label"></label>
+            <input asp-for="Lastname" class="form-control" />
+            <span asp-validation-for="Lastname" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="BirthDate" class="form-label"></label>
+            <input asp-for="BirthDate" class="form-control" type="date" />
+            <span asp-validation-for="BirthDate" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Symptom" class="form-label"></label>
+            <input asp-for="Symptom" class="form-control" />
+            <span asp-validation-for="Symptom" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" type="email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+
+        <div class="col-md-6">
+            <label asp-for="PhoneNumber" class="form-label"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="Index" class="btn btn-secondary"> Back</a>
+    </div>
+</form>
